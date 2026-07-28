@@ -1,9 +1,1 @@
-# VersionnameChange
-
-## Setup
-
-For setup instructions, please see the [Fabric Documentation page](https://docs.fabricmc.net/develop/getting-started/creating-a-project#setting-up) related to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+I'm being honest. I don't like the new Version numbering system. So i decided to make a client sided mod which fixes it for me. thats right now 1.22 exists. the numbering system i came up with is that the 26.1 version is 1.22, 26.1.1 is 1.22.1 26.1.2 is 1.22.2 and 26.2 is 1.22.3 and so on will it go. as soon as we reach 27.1 it will go up so that would be 1.23. i hope you like this little but fine mod. you can use 1.0.0 to 1.2.0 in 26.1 to 26.1.2 but i don't recommend it
