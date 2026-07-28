@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "io.sniperjohnny.github.versionnamechange.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"ExampleClientMixin",
+		"SharedConstantsVersionMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
