@@ -27,12 +27,12 @@ public class SharedConstantsVersionMixin {
         cir.setReturnValue(new WorldVersion() {
             @Override
             public String id() {
-                return original.id().replace("26.1.2", "1.22.2");
+                return original.id().replace("26.2", "1.22.3");
             }
 
             @Override
             public String name() {
-                return original.name().replace("26.1.2", "1.22.2");
+                return original.name().replace("26.2", "1.22.3");
             }
 
             @Override
