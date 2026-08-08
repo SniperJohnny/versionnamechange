@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_25",
 	"client": [
 		"ExampleClientMixin",
-		"SharedConstantsVersionMixin"
+		"SharedConstantsVersionMixin",
+		"TitleScreenMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
