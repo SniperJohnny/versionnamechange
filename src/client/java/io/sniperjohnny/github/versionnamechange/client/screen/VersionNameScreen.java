@@ -6,6 +6,7 @@ import io.sniperjohnny.github.versionnamechange.client.widgets.CustomWidgets;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
@@ -50,18 +51,30 @@ public class VersionNameScreen extends Screen {
         // Give the edit box focus so the player can type right away.
         this.setInitialFocus(this.versionNameBox);
 
-        CustomWidgets cancelwidget = new CustomWidgets(this.width /2 +5, this.height / 2 + 10
+        CustomWidgets cancelwidget = new CustomWidgets(this.width /2 - 100, this.height / 2 + 10
                 , 32, 32, () -> {
             this.onClose();
         }, "/widgets/cancel.png", true);
-
+        cancelwidget.setTooltip(Tooltip.create(Component.literal("Cancel")));
         this.addRenderableWidget(cancelwidget);
         // Save button — persists the text and closes the screen.
-        this.addRenderableWidget(Button.builder(
-                        Component.translatable("screen.versionnamechange.save"),
-                        button -> this.saveVersionName())
-                .bounds(this.width / 2 - 105, this.height / 2 + 10, 100, 20)
-                .build());
+        CustomWidgets saveWidget = new CustomWidgets(this.width / 2 + 68, this.height / 2 + 10, 32, 32
+        , () -> {
+            this.saveVersionName();
+
+        }, "widgets/save.png", true);
+        saveWidget.setTooltip(Tooltip.create(Component.literal("Save")));
+        this.addRenderableWidget(saveWidget);
+
+        CustomWidgets resetWidget = new CustomWidgets(this.width / 2 - 16, this.height / 2 + 10, 32, 32
+                , () -> {
+            this.versionNameBox.setValue(StandardConfigManager.getConfig().standardmodversionnumber);
+            this.saveVersionName();
+
+        }, "widgets/reset.png", true);
+        resetWidget.setTooltip(Tooltip.create(Component.literal("Reset to mod Default")));
+        this.addRenderableWidget(resetWidget);
+
 
         // Cancel button — closes the screen without saving.
         /*

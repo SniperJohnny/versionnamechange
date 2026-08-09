@@ -44,7 +44,7 @@ public class PlayerPrefsConfigManager {
                 currentplayerversionConfig = new PlayerPrefsConfig();
             }
         } catch (IOException e) {
-            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to load client config, using defaults.");
+            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to load client config, using defaults: " + e);
             currentplayerversionConfig = new PlayerPrefsConfig();
         }
     }
@@ -54,10 +54,17 @@ public class PlayerPrefsConfigManager {
             currentplayerversionConfig = new PlayerPrefsConfig();
         }
 
+        // FileWriter does not create missing parent directories, so make sure they exist first.
+        // Real failures surface below in the FileWriter catch block.
+        File parentDir = CONFIG_FILE.getParentFile();
+        if (parentDir != null) {
+            parentDir.mkdirs();
+        }
+
         try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
             GSON.toJson(currentplayerversionConfig, writer);
         } catch (IOException e) {
-            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to save client config.");
+            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to save client config: " + e);
         }
     }
 }

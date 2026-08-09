@@ -42,7 +42,7 @@ public class StandardConfigManager {
                 standardConfig = new StandardConfig();
             }
         } catch (IOException e) {
-            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to load client config, using defaults.");
+            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to load client config, using defaults: " + e);
             standardConfig = new StandardConfig();
         }
     }
@@ -52,10 +52,17 @@ public class StandardConfigManager {
             standardConfig = new StandardConfig();
         }
 
+        // FileWriter does not create missing parent directories, so make sure they exist first.
+        // Real failures surface below in the FileWriter catch block.
+        File parentDir = CONFIG_FILE.getParentFile();
+        if (parentDir != null) {
+            parentDir.mkdirs();
+        }
+
         try (FileWriter writer = new FileWriter(CONFIG_FILE)) {
             GSON.toJson(standardConfig, writer);
         } catch (IOException e) {
-            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to save client config.");
+            System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to save client config: " + e);
         }
     }
 }
