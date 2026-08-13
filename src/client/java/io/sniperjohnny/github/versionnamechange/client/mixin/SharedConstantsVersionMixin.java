@@ -1,5 +1,6 @@
 package io.sniperjohnny.github.versionnamechange.client.mixin;
 
+import io.sniperjohnny.github.versionnamechange.client.playerprefsconfig.PlayerPrefsConfigManager;
 import net.minecraft.SharedConstants;
 import net.minecraft.WorldVersion;
 import net.minecraft.server.packs.PackType;
@@ -32,7 +33,7 @@ public class SharedConstantsVersionMixin {
 
             @Override
             public String name() {
-                return original.name().replace("26.2", "1.22.3");
+                return original.name().replace("26.2", PlayerPrefsConfigManager.getConfig().newVersionName);
             }
 
             @Override

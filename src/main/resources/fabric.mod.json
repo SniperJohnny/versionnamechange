@@ -3,15 +3,15 @@
 	"id": "versionnamechange",
 	"version": "${version}",
 	"name": "VersionnameChange",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "You dont like the version name? No problem change it to your liking with version name change!",
 	"authors": [
 		"SniperJohnny"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"issues": "https://github.com/SniperJohnny/versionnamechange/issues",
+		"sources": "https://github.com/SniperJohnny/versionnamechange"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/versionnamechange/icon.png",
 	"environment": "*",
 	"entrypoints": {
