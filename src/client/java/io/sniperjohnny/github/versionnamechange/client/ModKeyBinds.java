@@ -19,7 +19,6 @@ public class ModKeyBinds {
         openVersionNameScreen = KeyMappingHelper.registerKeyMapping(
                 new KeyMapping(
                         "key.versionnamechange.changeversionname", // The translation key for the key mapping.
-                        InputConstants.Type.KEYSYM, // The type of the keybinding; KEYSYM for keyboard, MOUSE for mouse.
                         InputConstants.KEY_COMMA, // The keycode of the key.
                         CATEGORY // The category of the mapping.
                 ));

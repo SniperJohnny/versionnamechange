@@ -1,5 +1,6 @@
 package io.sniperjohnny.github.versionnamechange.client.screen;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import io.sniperjohnny.github.versionnamechange.client.playerprefsconfig.PlayerPrefsConfigManager;
 import io.sniperjohnny.github.versionnamechange.client.playerprefsconfig.StandardConfigManager;
 import io.sniperjohnny.github.versionnamechange.client.widgets.CustomWidgets;
@@ -10,7 +11,6 @@ import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
-import org.lwjgl.glfw.GLFW;
 
 /**
  * Screen where the player can edit the version name.
@@ -105,7 +105,7 @@ public class VersionNameScreen extends Screen {
     @Override
     public boolean keyPressed(KeyEvent event) {
         // ESC triggers the save (instead of the default cancel/close behavior).
-        if (event.key() == GLFW.GLFW_KEY_ESCAPE) {
+        if (event.key() == InputConstants.KEY_ESCAPE) {
             this.saveVersionName();
             return true;
         }

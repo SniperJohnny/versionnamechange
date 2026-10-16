@@ -3,6 +3,7 @@ package io.sniperjohnny.github.versionnamechange.client.playerprefsconfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.sniperjohnny.github.versionnamechange.VersionnameChange;
+import io.sniperjohnny.github.versionnamechange.client.version.VersionNameMapper;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
@@ -44,6 +45,16 @@ public class StandardConfigManager {
         } catch (IOException e) {
             System.err.println("[" + VersionnameChange.MOD_ID + "] Failed to load client config, using defaults: " + e);
             standardConfig = new StandardConfig();
+        }
+
+        // This field is the mod's own default, not a player preference, so keep it in step with the
+        // Minecraft version that is running. Without this a config written while on 26.2 would keep
+        // offering "1.22.3" after the player moves back to the 26.1 line.
+        String versionDefault = VersionNameMapper.defaultVersionName();
+        if (versionDefault != null && !versionDefault.isBlank()
+                && !versionDefault.equals(standardConfig.standardmodversionnumber)) {
+            standardConfig.standardmodversionnumber = versionDefault;
+            save();
         }
     }
 
